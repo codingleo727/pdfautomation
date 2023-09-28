@@ -1,11 +1,11 @@
 import tkinter.filedialog as tkf
 
-def uploadFile(filelist, ui):
+def uploadFile(filelist, ui, style):
    pathTuple = tkf.askopenfilenames(title = "Select a file", filetypes = [("PDF Files", "*.pdf")])
    pathList = list(pathTuple)
    for path in pathList:
       filelist.append(path)
-      ui.fileDisplay(path)
+      ui.fileDisplay(path, style)
 
 def removeFile(filelist, pdfname, pairList, ui):
    for path in filelist:
@@ -24,3 +24,4 @@ def removeWidget(pairList, index, ui):
       label.grid(row = i)
       button.grid(row = i)
       button["command"] = lambda filename = ui.fileList[i]: removeFile(ui.fileList, filename, ui.label_button_pairs, ui)
+      ui.onCanvasConfigure(None)
