@@ -1,7 +1,12 @@
 import fitz
 import os
 
-# Function to merge pdfs together
+# Merges selected PDF files and saves the merged PDF.
+# Parameter:
+#         filelist: (List[String]) List containing the paths of uploaded files
+#         master: (tk Widget) The parent widget
+# Returns:
+#         None
 def mergePDF(filelist, master):
     doc = fitz.open()
     for filename in filelist:
@@ -19,6 +24,12 @@ def mergePDF(filelist, master):
 
     clear_all(filelist, master)
 
+# Clears all uploaded files and their associated widgets.
+# Parameter:
+#         filelist: (List[String]) List containing the paths of uploaded files
+#         master: (tk Widget) The parent widget
+# Returns:
+#         None
 def clear_all(filelist, master):
     filelist.clear()
     for widget in master.winfo_children():
